@@ -1,0 +1,46 @@
+This project is accredited to "Abhishek Kishor Pathak"
+CONTACT: Linkedin: www.linkedin.com/in/abhishek-pathak-6601a7296
+
+PROJECT TITLE: Iris Flower Prediction model
+BASIC PROBLEM STATEMENT: Creating a Machine Learning model that can learn from
+these measurements and accurately classify the Iris flowers into
+their respective species.
+NOTE: The Iris flower can be generally classified into three species: setosa, versicolor,
+and virginica. These species can be distinguished based on their
+measurements. 
+OBJECTIVE: Creating a ML model and training it using the provided measurements file-which includes number of measurements of various Iris flowers.
+Which is in ".csv" format (i.e excel sheet format).
+ 
+    The project is divide into three parts (i.e three ".py" files) namely 
+    1) "load_data.py"
+    2) "train_model.py"
+    3) "predict_species.py"
+
+ "import" keyword is used to import pre installed libraries which are needed to be used in a python file;
+  it is also used to import other python files and the defined functions , wherever needed
+
+ 1)   The first file ("load_data.py") uses the pandas library to read the .csv file and access the data, load the data i.e get the dataset
+ready for further use. Here two functions are defined "load_dataset" & "display_initial_data". 
+"load_dataset" uses the "read_csv()" function from pandas library to access the data from .csv file. 
+Whereas "dataset.head()" function in the "display_initial_data" generally displays the first 5 rows 
+of data from the dataset if a number is not specified.
+2)   The second file ("train_model.py") uses the "sci-kit learn" ("sklearn") and the "sklearn" libraries - 
+   "train_test_split", "KNeighborsClassifier" & "accuracy_score"
+   "model_selection" is used to split our data into train and test sets where feature variables are given as input in the method.
+The "train_test_split" from "model_selection" splits the data into training set and a testing set. The training set is used for training the model, and the testing set is used to test the model. This will allow us to train the model on the training set, and then test its accuracy on the unseen testing set.(The test can only be valid if tested on unseen data). The "train_test_split" function has two parameters in it "test_size" & "random_state" ;  "random_state" is a model hyperparameter used to control the randomness involved in machine learning models; it can have two possible values ,'None' or '<any integer>' (generally the integers 0 or 42 are used) , 
+  a) if 'None' is used and the same function is  called multiple times, that function will produce different results across different executions.
+  b) if '<any integer>' is used the function will produce the same results across different executions. The results are only changed if we        change the integer value.
+     "test_size" is the ratio of the portions to be used for training & testing, it defines how much portion of the dataset to be used for testing and the rest will be used for "training". here we have used 0.2 test_size which says that 1/5th or 20percent of the total dataset is to be used for testing purpose and rest for training.
+     
+K-Nearest Neighbors (KNN) is a supervised machine learning algorithm used for classification and regression tasks. The KNeighborsClassifier in scikit-learn is an implementation of the k-Nearest Neighbors (KNN) algorithm for classification tasks. It assigns a class label to a data point based on the majority class among its k-nearest neighbors in the feature space. It has one parameter 'n_neighbors' (generally 'k' is used) which tells the number of nearest neighbors, to be considered while classifying data  points. Here, we have used 'n_neighbors =3'
+ The k_neighborclassifier algo uses the provided labelled dataset (label= iris flower species name for a certain data) , it will scan and remember the training data & later when a new unlabelled data point is introduced , it will assign it a class label based on the majority class among its k_nearest neigbours.
+     The model.fit(X_train.values, y_train.values) line trains the ML model (model) using the provided training features (X_train.values) and corresponding target labels (y_train.values). The fit function adjusts the model's parameters to learn patterns in the training data, enabling it to make predictions based on new, unseen data.
+  The model.predict(X_test.values) line predicts the target labels (y_pred) for the test features (X_test.values) using the trained machine learning model. The accuracy_score(y_test.values, y_pred) compares the predicted labels (y_pred) with the true labels (y_test.values) to calculate the accuracy of the model. Finally, the accuracy is printed using print("Model Accuracy:", accuracy).
+     The line "return model" returns the trained machine learning model after the training and evaluation process. This allows you to use the trained model for making predictions on new, unseen data outside of the training function.
+  In these lines, the feature matrix `X` is created, containing the sepal and petal measurements from the Iris dataset. The target variable `y` is set to the species labels. The `train_and_evaluate_model` function is then called with these features and labels, resulting in the training and evaluation of a K-Nearest Neighbors (KNN) classifier, and the trained model is stored in the variable `trained_model`.
+3) The "predict_species.py" file is the main file (" main.py"-the main file , usually running which will execute the entire program/model) of this model; It basically combines the "load_data.py" & "train_model.py" files i.e it imports the "load_data.py" & "train_model.py" files , & also imports  "iris_data" function from "load_data.py" & "trained_model" from "trained_model.py". A final function which will take the user input for the measurements of the flower's sepal_length, sepal_width, petal_length & petal_width ; which altogether may be called as the unlabelled data_point being introduced, which the model will use to find (K) 3 nearest neighbours of this point, and assign an appropriate label based on majority among the neighbors to the data point, which is what we call the prediction of the iris data model.
+ the outcome i.e name of the flower is printed as the output.
+
+
+   
+
